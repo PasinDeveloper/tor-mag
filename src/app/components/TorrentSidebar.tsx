@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
 import React from "react";
-import { 
-  AlertCircle, 
-  FileText, 
-  X, 
+import {
+  AlertCircle,
+  FileText,
+  X,
   Plus,
-  Image as ImageIcon
+  Image as ImageIcon,
 } from "lucide-react";
 import type { TorrentData } from "../../types/torrent";
 
@@ -29,12 +29,12 @@ export default function TorrentSidebar({
   onClearAll,
   selectedTorrent,
   onSelectTorrent,
-  formatFileSize
+  formatFileSize,
 }: TorrentSidebarProps) {
   return (
-    <div className="w-80 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col">
+    <div className="w-full md:w-80 bg-white dark:bg-gray-800 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-700 flex flex-col md:h-full">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+      <div className="p-4 md:p-6 border-b border-gray-200 dark:border-gray-700">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
           Add More Torrents
         </h2>
@@ -44,7 +44,7 @@ export default function TorrentSidebar({
       </div>
 
       {/* Upload Area */}
-      <div className="p-6 flex-1">
+      <div className="p-4 md:p-6 flex-1 overflow-y-auto md:overflow-visible">
         <div className="relative">
           <input
             type="file"
@@ -56,7 +56,7 @@ export default function TorrentSidebar({
           />
           <label
             htmlFor="torrent-input"
-            className="block w-full p-8 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl text-center cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200 bg-gray-50 dark:bg-gray-800"
+            className="block w-full p-6 md:p-8 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl text-center cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 transition-colors duration-200 bg-gray-50 dark:bg-gray-800"
           >
             <div className="space-y-4">
               <div className="mx-auto w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
@@ -79,7 +79,9 @@ export default function TorrentSidebar({
           <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
             <div className="flex items-center">
               <AlertCircle className="w-4 h-4 text-red-500 mr-2" />
-              <span className="text-xs text-red-700 dark:text-red-400">{error}</span>
+              <span className="text-xs text-red-700 dark:text-red-400">
+                {error}
+              </span>
             </div>
           </div>
         )}
@@ -104,8 +106,8 @@ export default function TorrentSidebar({
                   key={idx}
                   className={`p-3 rounded-lg border cursor-pointer transition-colors ${
                     selectedTorrent === idx
-                      ? 'bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800'
-                      : 'bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800'
+                      ? "bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800"
+                      : "bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
                   }`}
                   onClick={() => onSelectTorrent(idx)}
                 >
@@ -142,4 +144,4 @@ export default function TorrentSidebar({
       </div>
     </div>
   );
-} 
+}

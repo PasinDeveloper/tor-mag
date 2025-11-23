@@ -210,7 +210,7 @@ export default function ResultsPage() {
   if (!mounted) return null;
 
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-50 dark:bg-gray-900">
       {/* Left Sidebar */}
       <TorrentSidebar
         torrentData={torrentData}
@@ -224,7 +224,7 @@ export default function ResultsPage() {
       />
 
       {/* Right Side - Results */}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-w-0">
         {torrentData.length === 0 ? (
           <div className="flex-1 flex items-center justify-center">
             <div className="text-center">
@@ -271,13 +271,13 @@ export default function ResultsPage() {
             </div>
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-4 md:p-6">
               {selectedTorrent !== null && torrentData[selectedTorrent] && (
                 <div className="space-y-6">
-                  <div className="flex space-x-3">
+                  <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch">
                     {/* Images - External only */}
                     {loadingImages ? (
-                      <div className="w-1/3 h-[260px] text-center flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-xl">
+                      <div className="w-full md:w-1/3 h-[200px] md:h-auto md:min-h-[260px] text-center flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-xl">
                         <span className="text-gray-500 dark:text-gray-400 text-sm">
                           Loading images...
                         </span>
@@ -288,7 +288,7 @@ export default function ResultsPage() {
                         {externalImages &&
                         externalImages.screenshots &&
                         externalImages.screenshots.length > 0 ? (
-                          <div className="relative w-1/3 h-[260px] flex items-center text-center align-middle justify-center">
+                          <div className="relative w-full md:w-1/3 h-[200px] md:h-auto md:min-h-[260px] flex items-center text-center align-middle justify-center">
                             <Image
                               fill
                               alt="Banner"
@@ -298,7 +298,7 @@ export default function ResultsPage() {
                             />
                           </div>
                         ) : (
-                          <div className="w-1/3 h-[260px] flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-xl">
+                          <div className="w-full md:w-1/3 h-[200px] md:h-auto md:min-h-[260px] flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-xl">
                             <span className="text-gray-400 dark:text-gray-600 text-lg">
                               No banner image available
                             </span>
@@ -308,7 +308,7 @@ export default function ResultsPage() {
                     )}
 
                     {/* Torrent Header */}
-                    <div className="w-2/3 h-[260px]">
+                    <div className="w-full md:w-2/3 h-auto md:min-h-[260px] flex flex-col">
                       <TorrentHeader
                         torrent={torrentData[selectedTorrent]}
                         index={selectedTorrent}

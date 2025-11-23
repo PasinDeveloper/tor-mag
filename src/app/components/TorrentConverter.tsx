@@ -67,19 +67,20 @@ export default function TorrentConverter() {
   };
 
   return (
-    <div className="flex flex-col items-center w-full max-w-4xl mx-auto">
+    <div className="flex flex-col items-center w-full max-w-4xl mx-auto px-4 md:px-0">
       {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      <div className="text-center mb-4 md:mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Torrent to Magnet Converter
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 text-lg">
-          Upload .torrent files to get comprehensive information and magnet links
+        <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg">
+          Upload .torrent files to get comprehensive information and magnet
+          links
         </p>
       </div>
 
       {/* File Upload Area */}
-      <div className="w-full max-w-md mb-8">
+      <div className="w-full max-w-md mb-4 md:mb-8">
         <div className="relative">
           <input
             type="file"
@@ -91,10 +92,10 @@ export default function TorrentConverter() {
           />
           <label
             htmlFor="torrent-input"
-            className={`block w-full p-8 border-2 border-dashed rounded-xl text-center cursor-pointer transition-colors duration-200 ${
-              isProcessing 
-                ? 'border-yellow-300 dark:border-yellow-600 bg-yellow-50 dark:bg-yellow-900/20' 
-                : 'border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 bg-gray-50 dark:bg-gray-800'
+            className={`block w-full p-4 md:p-8 border-2 border-dashed rounded-xl text-center cursor-pointer transition-colors duration-200 ${
+              isProcessing
+                ? "border-yellow-300 dark:border-yellow-600 bg-yellow-50 dark:bg-yellow-900/20"
+                : "border-gray-300 dark:border-gray-600 hover:border-blue-500 dark:hover:border-blue-400 bg-gray-50 dark:bg-gray-800"
             }`}
           >
             <div className="space-y-4">
@@ -107,10 +108,12 @@ export default function TorrentConverter() {
               </div>
               <div>
                 <p className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  {isProcessing ? 'Processing...' : 'Drop .torrent files here'}
+                  {isProcessing ? "Processing..." : "Drop .torrent files here"}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  {isProcessing ? 'Please wait while we parse your files' : 'or click to browse'}
+                  {isProcessing
+                    ? "Please wait while we parse your files"
+                    : "or click to browse"}
                 </p>
               </div>
             </div>
@@ -145,4 +148,4 @@ export default function TorrentConverter() {
       )}
     </div>
   );
-} 
+}
